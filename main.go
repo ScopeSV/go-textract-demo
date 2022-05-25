@@ -12,10 +12,10 @@ import (
 var tSession *textract.Textract
 
 func init() {
-	mySession := session.Must(session.NewSession(&aws.Config{
-		Region: aws.String("eu-west-1"),
-	}))
-	tSession = textract.New(mySession)
+	tSession = textract.New(
+		session.Must(session.NewSession(&aws.Config{
+			Region: aws.String("eu-west-1"),
+		})))
 }
 
 func detectDocumentText(file []byte) {
